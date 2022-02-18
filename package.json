@@ -16,9 +16,12 @@
     "prettier:fix": "prettier --write .",
     "prepare": "husky install"
   },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/@ferch01992"
+  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fercho0/Profile.git"
+    "url": "git@github.com:ferch01992/form-validator.git"
   },
   "keywords": [
     "React",

@@ -1,3 +1,3 @@
-const extensionCom = ['.js', '.jsx', '.json'];
+const extensionCom = ['.js', '.json'];
 
 module.exports = extensionCom;

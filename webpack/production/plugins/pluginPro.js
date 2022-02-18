@@ -1,6 +1,5 @@
 const webpack = require('webpack');
 const CompressionPlugin = require('compression-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const pluginPro = (VERSION_APP, TIME) => [
   new webpack.ids.HashedModuleIdsPlugin({
@@ -17,10 +16,6 @@ const pluginPro = (VERSION_APP, TIME) => [
     minRatio: Number.MAX_SAFE_INTEGER,
     test: /\.js$|\.png|\.svg$|\.jpg$|\.css$|\.eot?.+$|\.ttf?.+$|\.woff?.+$/,
     threshold: 0,
-  }),
-
-  new MiniCssExtractPlugin({
-    filename: `assets/styles/${VERSION_APP}.[name].${TIME}.[contenthash].min.css`,
   }),
 ];
 

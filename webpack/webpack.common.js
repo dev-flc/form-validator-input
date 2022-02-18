@@ -11,10 +11,7 @@ module.exports = {
   entry: {
     [NAME_APP]: {
       filename: `js/[name].${VERSION_APP}.${TIME}.[contenthash].js`,
-      import: [
-        path.resolve(__dirname, './../src/index.js'),
-        path.resolve(__dirname, './../src/assets/styles/index.scss'),
-      ],
+      import: [path.resolve(__dirname, './../example/index.js')],
     },
   },
 

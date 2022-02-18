@@ -17,12 +17,6 @@ npm run lint:check ||
   false;
 )
 
-npm run style:check ||
-(
-  echo '🤢 🤮 🤢 🤮 UUPS - El CÓDIGO SCSS NO CUMPLE COM LAS REGLAS DE STYLELINT. TENDRAS QUE CORREGIRLO. 🔥 🔥 🔥 🔥'
-  false;
-)
-
 echo '🤔 🤔 🤔 🤔 MUY BIEN... El CÓDIGO ME PARECE BIEN... INTENTAREMOS COMPILAR TU CÓDIGO 😈 😈 😈'
 
 npm run build ||

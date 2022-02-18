@@ -4,7 +4,7 @@ module.exports = {
     es2021: true,
     node: true,
   },
-  extends: ['plugin:react/recommended', 'standard', 'prettier'],
+  extends: ['standard', 'prettier'],
   globals: {
     Blob: true,
     FileReader: true,
@@ -22,7 +22,7 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module',
   },
-  plugins: ['react', 'prettier'],
+  plugins: ['prettier'],
   rules: {
     'prettier/prettier': [
       'error',
@@ -45,10 +45,5 @@ module.exports = {
       'asc',
       { caseSensitive: true, minKeys: 2, natural: false },
     ],
-  },
-  settings: {
-    react: {
-      version: 'detect',
-    },
   },
 };

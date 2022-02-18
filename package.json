@@ -18,7 +18,7 @@
   "publishConfig": {
     "registry": "https://npm.pkg.github.com/@ferch01992"
   },
-  "repository": "git@github.com:ferch01992/form-validator.git",
+  "repository": "https://registry.npmjs.org",
   "keywords": [
     "React",
     "Webpack5",

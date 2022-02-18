@@ -8,13 +8,6 @@ const TIME = new Date().getTime();
 const { VERSION_APP, NAME_APP } = process.env;
 
 module.exports = {
-  entry: {
-    [NAME_APP]: {
-      filename: `js/[name].${VERSION_APP}.${TIME}.[contenthash].js`,
-      import: [path.resolve(__dirname, './../example/index.js')],
-    },
-  },
-
   module: moduleCom(VERSION_APP, TIME),
 
   output: {

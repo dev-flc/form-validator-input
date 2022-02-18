@@ -2,10 +2,9 @@
   "name": "form-validator",
   "version": "1.0.0",
   "description": "template app react",
-  "main": "index.js",
+  "main": "public/index.js",
   "scripts": {
-    "build": "SET VERSION_APP=%npm_package_version%& SET NAME_APP=%npm_package_name%& webpack --config webpack/webpack.prod.js",
-    "buildd": "NAME_APP=$npm_package_name VERSION_APP=$npm_package_version webpack --config webpack/webpack.prod.js",
+    "build": "babel src -d public --copy-files",
     "de": "NAME_APP=$npm_package_name VERSION=$npm_package_version webpack-dev-server --progress --config webpack/webpack.dev.js",
     "dev": "SET VERSION_APP=%npm_package_version%& SET NAME_APP=%npm_package_name%& webpack-dev-server --progress --config webpack/webpack.dev.js",
     "lint:check": "eslint src/** .",
@@ -37,6 +36,7 @@
   },
   "homepage": "https://github.com/fercho0/Profile#readme",
   "devDependencies": {
+    "@babel/cli": "^7.17.3",
     "@babel/core": "7.15.8",
     "@babel/preset-env": "7.15.8",
     "babel-eslint": "10.1.0",

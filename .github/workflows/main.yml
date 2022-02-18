@@ -20,7 +20,9 @@ jobs:
                   scope: '@ferch01992'
             - name: 🚀 install
               run: npm install
-            - name: 🚀 publish public
-              run: npm publish --access public
+            - name: 🔨 build
+              run: npm run build
+            - name: 🚀 publish
+              run: npm publish
               env:
                   NODE_AUTH_TOKEN: ${{secrets.NPM_AUTH_TOKEN}}

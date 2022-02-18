@@ -4,6 +4,7 @@ public
 /public
 node_modules
 /node_modules
+.github
 package-lock.json
 .vscode/
 .DS_Store

@@ -1,12 +1,12 @@
 {
   "name": "form-validator-input",
   "version": "1.0.0",
-  "description": "template app react",
+  "description": "form validator",
   "main": "public/index.js",
   "scripts": {
     "build": "babel src -d public --copy-files",
-    "de": "NAME_APP=$npm_package_name VERSION=$npm_package_version webpack-dev-server --progress --config webpack/webpack.dev.js",
-    "dev": "SET VERSION_APP=%npm_package_version%& SET NAME_APP=%npm_package_name%& webpack-dev-server --progress --config webpack/webpack.dev.js",
+    "dev": "NAME_APP=$npm_package_name VERSION=$npm_package_version webpack-dev-server --progress --config webpack/webpack.dev.js",
+    "dev:win": "SET VERSION_APP=%npm_package_version%& SET NAME_APP=%npm_package_name%& webpack-dev-server --progress --config webpack/webpack.dev.js",
     "lint:check": "eslint src/** .",
     "lint:fix": "eslint . --fix",
     "style:check": "stylelint src/assets/styles/**/*.scss",
@@ -15,25 +15,22 @@
     "prettier:fix": "prettier --write .",
     "prepare": "husky install"
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ferch01992/form-validator-input.git"
   },
-  "repository": "https://github.com/ferch01992/form-validator.git",
   "keywords": [
-    "React",
-    "Webpack5",
-    "Redux",
-    "Material-UI",
-    "Firebase"
+    "Js",
+    "babel"
   ],
-  "author": "Fernando.lc",
+  "author": "Ferch01992",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/fercho0/Profile/issues"
+    "url": "https://github.com/ferch01992/form-validator-input/issues"
   },
-  "homepage": "https://github.com/fercho0/Profile#readme",
+  "homepage": "https://github.com/ferch01992/form-validator-input#readme",
   "devDependencies": {
-    "@babel/cli": "^7.17.3",
+    "@babel/cli": "7.17.3",
     "@babel/core": "7.15.8",
     "@babel/preset-env": "7.15.8",
     "babel-eslint": "10.1.0",

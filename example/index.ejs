@@ -10,8 +10,35 @@
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
   <body>
-    <div id="app">
-      <h1>Example</h1>
+    <div id="app" class="container">
+      <h1 class="gradient-tex">form-validator-input</h1>
     </div>
   </body>
+  <style>
+    * {
+      background: rgb(4 12 24 / 100%);
+    }
+    .gradient-tex {
+      background: linear-gradient(89.97deg, #ae67fa 1.84%, #f49867 102.67%);
+      font-size: 50px;
+      line-height: 75px;
+      font-weight: 800;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      -webkit-background-clip: text;
+      margin: 0;
+    }
+    .container {
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      width: 100%;
+      height: auto;
+      bottom: 0;
+      top: 0;
+      left: 0;
+      position: absolute;
+      flex-direction: column;
+    }
+  </style>
 </html>

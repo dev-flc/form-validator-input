@@ -10,8 +10,17 @@ export const isArray = data => Array.isArray(data);
 export const isValidString = value =>
   value === null || value === '' || value === undefined;
 
-export const resultError = (title, id, message, textMessageError) => ({
-  error: messageError(title, textMessageError, message),
+export const isObject = obj =>
+  Object.prototype.toString.call(obj) === '[object Object]';
+
+export const resultError = (
+  title,
   id,
+  language,
+  messages,
+  textMessageError
+) => ({
+  id,
+  message: messageError(title, language, textMessageError, messages),
   status: false,
 });

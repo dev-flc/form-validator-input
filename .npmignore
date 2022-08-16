@@ -2,6 +2,10 @@
 node_modules
 /node_modules
 
+.github
+
+.husky
+
 /example/
 example
 /example
@@ -14,14 +18,18 @@ src
 webpack
 /webpack
 
-.github
-.husky
+.babelrc
+
+.editorconfig
+
+.eslintignore
+
+.eslintrc
+
+.gitignore
+
+.prettierignore
+
+.prettierrc.js
 
 package-lock.json
-.babelrc
-.editorconfig
-.eslintignore
-.eslintrc
-.gitignore
-.prettierignore
-.prettierrc.js

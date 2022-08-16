@@ -1,27 +1,32 @@
-name: "🚀 publish"
+name: "💻 publish"
 
 on:
-    push:
-        branches:
-          - master
+  push:
+    tags:
+      - "*"
 
 jobs:
-    release:
-        name: 🚀 publish
-        runs-on: ubuntu-latest
-        steps:
-            - name: 📚 checkout
-              uses: actions/checkout@v2
-            - name: 🟢 node
-              uses: actions/setup-node@v2
-              with:
-                  node-version: 12
-                  registry-url: 'https://npm.pkg.github.com'
-            - name: 🚀 install
-              run: npm install
-            - name: 🔨 build
-              run: npm run build
-            - name: 🚀 publish
-              run: npm publish
-              env:
-                  NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN }}
+  publish-gpr:
+    name: 🖥️ publish
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: 📚 checkout
+        uses: actions/checkout@v2
+      - name: 🟢 node
+        uses: actions/setup-node@v2
+        with:
+          node-version: 12
+          registry-url: "https://registry.npmjs.org"
+          scope: "@ferch01992"
+      - name: ⚙️ install
+        run: npm install
+      - name: 🛠️ build
+        run: npm run build
+      - name: 🚀 publish
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+

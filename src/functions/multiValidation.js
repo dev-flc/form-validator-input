@@ -1,68 +1,84 @@
 import { SWITCH_VALIDATIONS } from 'Funtion/switchValidations.js';
-import { isString, isArray, isValidString } from 'Utils/funtionsUtils.js';
+import {
+  isString,
+  isObject,
+  isArray,
+  isValidString,
+} from 'Utils/funtionsUtils.js';
+import { TYPE_LANGUAGE as TL } from 'Utils/constants.js';
 
-export const multiValidation = data => {
+export const multiValidation = (data, language = TL.DEFAULT) => {
   const result = { status: true };
 
   for (const NEW_DATA of data) {
-    const {
-      curpMessageError,
-      dateMessageError,
-      emailMessageError,
-      id,
-      numberMessageError,
-      requiredMessageError,
-      rfcMessageError,
-      rfckeyCodeMessageError,
-      texNumMessageError,
-      textMessageError,
-      title,
-      type,
-      value,
-    } = NEW_DATA;
-
     let newResult = {
-      error: 'El valor de type no es un array o un string con datos',
-      id,
+      message: 'Propiedad invalida, se espera una propiedad de tipo objeto',
       status: false,
-      title,
-      type,
     };
+    if (isObject(NEW_DATA)) {
+      const {
+        comboMessageError,
+        curpMessageError,
+        dateMessageError,
+        emailMessageError,
+        id,
+        numberMessageError,
+        requiredMessageError,
+        rfcMessageError,
+        rfckeyCodeMessageError,
+        texNumMessageError,
+        textMessageError,
+        title,
+        type,
+        value,
+      } = NEW_DATA;
 
-    if (isArray(type) && type.length >= 1) {
-      for (const NEW_TYPE of type) {
-        const resultMulty = SWITCH_VALIDATIONS({
-          curpMessageError,
-          dateMessageError,
-          emailMessageError,
-          id,
-          numberMessageError,
-          requiredMessageError,
-          rfcMessageError,
-          rfckeyCodeMessageError,
-          texNumMessageError,
-          textMessageError,
-          title,
-          type: NEW_TYPE,
-          value,
-        });
+      newResult = {
+        id,
+        message: 'El valor de type no es un array o un string con datos',
+        status: false,
+        title,
+        type,
+      };
 
-        if (resultMulty.status === false) {
-          newResult = resultMulty;
-          break;
-        } else {
-          newResult = resultMulty;
+      if (isArray(type) && type.length >= 1) {
+        for (const NEW_TYPE of type) {
+          const resultMulty = SWITCH_VALIDATIONS({
+            comboMessageError,
+            curpMessageError,
+            dateMessageError,
+            emailMessageError,
+            id,
+            language,
+            numberMessageError,
+            requiredMessageError,
+            rfcMessageError,
+            rfckeyCodeMessageError,
+            texNumMessageError,
+            textMessageError,
+            title,
+            type: NEW_TYPE,
+            value,
+          });
+
+          if (resultMulty.status === false) {
+            newResult = resultMulty;
+            break;
+          } else {
+            newResult = resultMulty;
+          }
         }
+      } else if (isString(type) && !isValidString(type)) {
+        newResult = SWITCH_VALIDATIONS(NEW_DATA);
+      } else {
+        return newResult;
       }
-    } else if (isString(type) && !isValidString(type)) {
-      newResult = SWITCH_VALIDATIONS(NEW_DATA);
+      if (!newResult.status) {
+        return newResult;
+      }
     } else {
       return newResult;
     }
-    if (!newResult.status) {
-      return newResult;
-    }
   }
-
   return result;
 };

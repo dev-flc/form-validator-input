@@ -1,8 +1,12 @@
-import { isRequired, generalValidations } from 'Funtion/functions.js';
+import {
+  isRequired,
+  generalValidations,
+  isRequiredCombo,
+} from 'Funtion/functions.js';
 
 import { EXPRESSIONS as E } from 'Utils/expressions.js';
 
-import { CONSTANTS as C } from 'Utils/constants.js';
+import { TYPE_MESSAGE as TM } from 'Utils/constants.js';
 
 export const SWITCH_VALIDATIONS = d => {
   let result = {};
@@ -11,7 +15,8 @@ export const SWITCH_VALIDATIONS = d => {
     case 'R': // required data validation
       result = isRequired(
         d.value,
-        C.MESSAGE_IS_REQUIRED,
+        TM.MESSAGE_IS_REQUIRED,
+        d.language,
         d.id,
         d.title,
         d.requiredMessageError
@@ -21,7 +26,8 @@ export const SWITCH_VALIDATIONS = d => {
     case 'T': // text data validation
       result = generalValidations(
         d.value,
-        C.MESSAGE_IS_TEXT,
+        TM.MESSAGE_IS_TEXT,
+        d.language,
         E.EXP_TEXT,
         d.id,
         d.title,
@@ -32,7 +38,8 @@ export const SWITCH_VALIDATIONS = d => {
     case 'N': // number data validation
       result = generalValidations(
         d.value,
-        C.MESSAGE_IS_NUMBER,
+        TM.MESSAGE_IS_NUMBER,
+        d.language,
         E.EXP_NUMBER,
         d.id,
         d.title,
@@ -43,7 +50,8 @@ export const SWITCH_VALIDATIONS = d => {
     case 'TN': // text and number data validation
       result = generalValidations(
         d.value,
-        C.MESSAGE_IS_TEXT_NUMBER,
+        TM.MESSAGE_IS_TEXT_NUMBER,
+        d.language,
         E.EXP_TEXT_NUMBER,
         d.id,
         d.title,
@@ -54,7 +62,8 @@ export const SWITCH_VALIDATIONS = d => {
     case 'DATE': // Dete data validation
       result = generalValidations(
         d.value,
-        C.MESSAGE_IS_DATE,
+        TM.MESSAGE_IS_DATE,
+        d.language,
         E.EXP_DATE,
         d.id,
         d.title,
@@ -65,7 +74,8 @@ export const SWITCH_VALIDATIONS = d => {
     case 'EMAIL': // Email data validation
       result = generalValidations(
         d.value,
-        C.MESSAGE_IS_EMAIL,
+        TM.MESSAGE_IS_EMAIL,
+        d.language,
         E.EXP_EMAIL,
         d.id,
         d.title,
@@ -76,7 +86,8 @@ export const SWITCH_VALIDATIONS = d => {
     case 'CURP': // CURP data validation
       result = generalValidations(
         d.value,
-        C.MESSAGE_IS_CURP,
+        TM.MESSAGE_IS_CURP,
+        d.language,
         E.EXP_CURP,
         d.id,
         d.title,
@@ -87,7 +98,8 @@ export const SWITCH_VALIDATIONS = d => {
     case 'RFC': // RFC data validation
       result = generalValidations(
         d.value,
-        C.MESSAGE_IS_RFC_KEY_CODE,
+        TM.MESSAGE_IS_RFC_KEY_CODE,
+        d.language,
         E.EXP_RFC,
         d.id,
         d.title,
@@ -98,7 +110,8 @@ export const SWITCH_VALIDATIONS = d => {
     case 'RFC_KEY_CODE': // RFC key code data validation
       result = generalValidations(
         d.value,
-        C.MESSAGE_IS_RFC,
+        TM.MESSAGE_IS_RFC,
+        d.language,
         E.EXP_RFC_KEY_CODE,
         d.id,
         d.title,
@@ -106,10 +119,21 @@ export const SWITCH_VALIDATIONS = d => {
       );
       break;
 
+    case 'C': // RFC key code data validation
+      result = isRequiredCombo(
+        d.value,
+        TM.MESSAGE_IS_COMBO,
+        d.language,
+        d.id,
+        d.title,
+        d.comboMessageError
+      );
+      break;
+
     default:
       result = {
-        error: 'El tipo de validación no existe :(',
         id: d.id,
+        message: 'El tipo de validación no existe :(',
         status: false,
         title: d.title,
         type: d.type,
